@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1c2c2462bf.js" crossorigin="anonymous"></script>
+    <title>Aesthetic</title>
+</head>
+<body onload="onload()">
+    <nav class="nav nav-3">
+        <a class="nav-logo" href="/">Aesthetic</a>
+        <ul class="nav-list">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="#" id="cart">Cart</a>
+          </li>
+        </ul>
+      </nav>
+    <div class="container">
+        
+    </div>
+    <h1 id="total" style="color: #fff; text-align: center;">Total -  ₹0</h1>
+    <div style="display: flex; width: 100%; margin: 10px auto; justify-content: center;">
+        <a href="/checkout.html" class="nav-btn">Checkout</a>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function onload() {
+            card = document.querySelector(".container");
+            generateCart()
+            calculateTotal();
+        }
+        
+        function generateCart() {
+            if(!cart || !cart.length) window.location.replace("/")
+            card.innerHTML = ""
+            cart.map((itm, i) => {
+                console.log(itm)
+                if (!itm) return;
+                card.innerHTML += `
+                <div class="card" key="i">
+                    <div class="content-1">
+                        <img src="${itm.image}" alt="">
+                    </div>
+                    <div class="content-2">
+                        <div class="branding">
+                            <span>${itm.name}</span>
+                            <span>₹${itm.price}</span>
+                        </div>
+                        <div class="ratings">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                        </div>
+                        <div class="size">
+                            <h3>SIZE</h3>
+                            <span>${itm.size}</span>
+                        </div>
+                        <div class="color">
+                            <h3>Color</h3>
+                            <span class="${itm.color.toLowerCase()}"></span>
+                        </div>
+                        <div class="price" onclick="rmvItm(${i});">
+                            <span>Remove Item</span>
+                        </div>
+                    </div>
+                </div>
+                `
+            })
+        }
+
+        function rmvItm(i) {
+            removeItem(i);
+            generateCart()
+            calculateTotal();
+            // window.location.reload();
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            cart.map(itm => {
+                total += itm.price;
+            })
+            const text = document.querySelector("#total");
+            text.textContent = `Total - ₹${total}`;
+            return total;
+        }
+    </script>
+</body>
+</html>

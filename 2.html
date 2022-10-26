@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product.css">
+</head>
+
+<body onload="onload()">
+    <nav class="nav nav-3">
+        <a class="nav-logo" href="#">Aesthetic</a>
+        <ul class="nav-list">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/cart.html" id="cart">Cart</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <div class="content-1">
+                <img src="2.jpg" alt="">
+            </div>
+            <div class="content-2">
+                <div class="branding">
+                    <span>Fashionable Top & Skirt</span>
+                    <span></span>
+                    <h4>Girls Plaid Mock Neck Top & Skirt</h4>
+                </div>
+                <div class="ratings">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                </div>
+                <div class="size">
+                    <h3>SIZE</h3>
+                    <span onclick="size = 'S'">S</span>
+                    <span onclick="size = 'M'">M</span>
+                    <span onclick="size = 'L'">L</span>
+                    <span onclick="size = 'XL'">XL</span>
+                    <span onclick="size = 'XXL'">XXL</span>
+                </div>
+                <div class="color">
+                    <h3>Color</h3>
+                    <span onclick="color = 'Black'" class="black"></span>
+                </div>
+                <div class="price" onclick="newItem()">
+                    <span>Add To Cart - ₹250</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        size = "L"
+        color = "Black"
+        price = parseInt(document.querySelector(".price span").textContent.split(" ")[4].split("₹")[1]);
+        image = document.querySelector(".content-1 img").src;
+        name = document.querySelector(".branding span").textContent;
+        function newItem() {
+            item = {
+                name: name,
+                size: size,
+                color: color,
+                price: price,
+                image: image
+            };
+            addToCart(item)
+        }
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
