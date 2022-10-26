@@ -11,10 +11,10 @@
 </head>
 <body onload="onload()">
     <nav class="nav nav-3">
-        <a class="nav-logo" href="/">Aesthetic</a>
+        <a class="nav-logo" href="./">Aesthetic</a>
         <ul class="nav-list">
             <li>
-                <a href="/">Home</a>
+                <a href="./">Home</a>
             </li>
             <li>
                 <a href="#" id="cart">Cart</a>
@@ -26,7 +26,7 @@
     </div>
     <h1 id="total" style="color: #fff; text-align: center;">Total -  ₹0</h1>
     <div style="display: flex; width: 100%; margin: 10px auto; justify-content: center;">
-        <a href="/checkout.html" class="nav-btn">Checkout</a>
+        <a href="./checkout.html" class="nav-btn">Checkout</a>
     </div>
     <script src="script.js"></script>
     <script>
@@ -37,7 +37,7 @@
         }
         
         function generateCart() {
-            if(!cart || !cart.length) window.location.replace("/")
+            if(!cart || !cart.length) window.location.replace("./")
             card.innerHTML = ""
             cart.map((itm, i) => {
                 console.log(itm)
